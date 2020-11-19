@@ -27,6 +27,8 @@ int main()
 
 	cout << "F4 - EXIT" << endl;
 	cout << "Closing this windows in 10 seconds..." << endl;
+	Sleep(10000);
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	while (true)
 	{
 		Sleep(1);
@@ -41,6 +43,4 @@ int main()
 			exit(0);
 		}
 	}
-	Sleep(10000);
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
 }
