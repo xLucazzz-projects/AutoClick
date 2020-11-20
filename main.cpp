@@ -2,6 +2,11 @@
 #include <Windows.h>
 
 using namespace std;
+
+struct variables{
+	int key = VK_XBUTTON2;
+}val;
+
 void setcolor(unsigned short color)
 {
 	HANDLE hcon = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -26,21 +31,31 @@ int main()
 	cout << "|__|__|_____| |_| |_____|_____|_____|_____|_____|__|__|\n" << endl;
 
 	cout << "F4 - EXIT" << endl;
-	cout << "Closing this windows in 10 seconds..." << endl;
-	Sleep(10000);
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
+	cout << "F5 - HIDE MENU" << endl;
+	cout << "F6 - SHOW MENU" << endl;
 	while (true)
 	{
 		Sleep(1);
-		if (GetAsyncKeyState(VK_XBUTTON2)) {
+		if (GetAsyncKeyState(val.key)) {
 			mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-			Sleep(25);
+			Sleep(27);
 			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-			Sleep(rand() % 39);
+			Sleep(rand() % 49);
 		}
 
 		if (GetAsyncKeyState(VK_F4)) {
+			MessageBox(NULL, "Autoclick Unloaded", "[AUTOCLICK] | by xLucazzz", 0);
+			Sleep(2000);
 			exit(0);
 		}
+
+		if (GetAsyncKeyState(VK_F5)) {
+			ShowWindow(GetConsoleWindow(), SW_HIDE);
+		}
+
+		if (GetAsyncKeyState(VK_F6)) {
+			ShowWindow(GetConsoleWindow(), SW_SHOW);
+		}
+
 	}
 }
